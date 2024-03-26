@@ -18,21 +18,20 @@ public class B3018 {
 
         System.out.println(Arrays.toString(perceived));
 
-        return 1;
+        return 1; // returns anything that is of type 'integer'
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-
         List<Integer> genius = new ArrayList<>();
         int N = Integer.parseInt(br.readLine());
 
-        perceived = new int[N];
 
         int E = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < E; i++) {
+            perceived = new int[N];
             List<Integer> participants = new ArrayList<>();
             String[] infos = br.readLine().split(" ");
             int K = Integer.parseInt(infos[0]);
@@ -40,6 +39,7 @@ public class B3018 {
                 participants.add(Integer.parseInt(infos[j]));
             }
             genius.add(findGenius(K, participants));
+
         }
 
         for (Integer g : genius) {
