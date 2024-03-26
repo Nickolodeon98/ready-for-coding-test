@@ -16,7 +16,7 @@ public class B3018 {
             perceived[member-1] = 1;
         }
 
-        System.out.println(Arrays.toString(perceived));
+//        System.out.println(Arrays.toString(perceived));
 
         return 1; // returns anything that is of type 'integer'
     }
@@ -42,8 +42,6 @@ public class B3018 {
 
         }
 
-        for (Integer g : genius) {
-            System.out.println(g);
-        }
+        System.out.println(genius);
     }
 }
