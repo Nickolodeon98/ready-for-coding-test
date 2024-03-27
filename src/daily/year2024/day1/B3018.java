@@ -6,13 +6,14 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class B3018 {
-
-    final static int SUN_YOUNG = 1;
-    static int[] perceived;
+    final static int SUN_YOUNG = 1; // Sunyoung is always labelled '1'
+    static int[] perceived; // tracks people who have learned a song
     public static int[] findGenius(int total, List<Integer> members) {
         for (Integer member : members) {
             perceived[member-1] = 1;
         }
+
+        Arrays.sort(perceived); // sort in ascending order
 
         return perceived; // returns anything that is of type 'integer'
     }
@@ -22,7 +23,6 @@ public class B3018 {
 
         Map<String, int[]> genius = new HashMap<>();
         int N = Integer.parseInt(br.readLine());
-
 
         int E = Integer.parseInt(br.readLine());
 
