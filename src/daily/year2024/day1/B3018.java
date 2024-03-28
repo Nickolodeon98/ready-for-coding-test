@@ -7,36 +7,42 @@ import java.util.*;
 
 public class B3018 {
     final static int SUN_YOUNG = 1; // Sunyoung is always labelled '1'
+    static int count;
     static int[] perceived; // tracks people who have learned a song
-    public static int[] findGenius(int total, List<Integer> members) {
+
+    public static void findGenius(List<Integer> members) {
         for (Integer member : members) {
-            perceived[member-1] = 1;
+            perceived[member-1] += 1;
         }
 
         Arrays.sort(perceived); // sort in ascending order
-
-        return perceived; // returns anything that is of type 'integer'
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        Map<String, int[]> genius = new HashMap<>();
+        Map<String, String> genius = new HashMap<>();
         int N = Integer.parseInt(br.readLine());
 
         int E = Integer.parseInt(br.readLine());
+        count = E;
+        perceived = new int[N];
 
         for (int i = 0; i < E; i++) {
-            perceived = new int[N];
             List<Integer> participants = new ArrayList<>();
             String[] infos = br.readLine().split(" ");
             int K = Integer.parseInt(infos[0]);
             for (int j = 1; j <= K; j++) {
                 participants.add(Integer.parseInt(infos[j]));
             }
-            genius.put(String.valueOf(i), findGenius(K, participants));
+            findGenius(participants);
+            genius.put(String.valueOf(i), Arrays.toString(perceived));
         }
 
-        System.out.println(genius);
+        for (int i = 0; i < perceived.length; i++) {
+            if (perceived[i] == count) System.out.println(i+1);
+        }
+
+        System.out.println(Arrays.toString(perceived));
     }
 }
