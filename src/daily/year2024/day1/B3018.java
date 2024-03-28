@@ -11,11 +11,19 @@ public class B3018 {
     static int[] perceived; // tracks people who have learned a song
 
     public static void findGenius(List<Integer> members) {
+        boolean flag = false;
         for (Integer member : members) {
-            perceived[member-1] += 1;
+            if (perceived[member-1] >= 1) {
+                flag = true;
+                break;
+            }
         }
-
-        Arrays.sort(perceived); // sort in ascending order
+        
+        if (flag || members.contains(SUN_YOUNG)) {
+            for (Integer member : members) {
+                perceived[member - 1] += 1;
+            }
+        }
     }
 
     public static void main(String[] args) throws IOException {
